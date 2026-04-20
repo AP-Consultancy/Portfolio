@@ -163,6 +163,7 @@ const App = () => {
           </HeroCollageMotion>
         </HeroInner>
 
+      </HeroSection>
         {hasStripLogos ? (
           <HeroLogoStrip aria-hidden>
             <HeroLogoMarquee>
@@ -170,14 +171,14 @@ const App = () => {
                 <HeroLogoGroup>
                   {logoUrls.map((src, idx) => (
                     <HeroLogoItem key={`${src}-${idx}`}>
-                      <img src={src} alt="" loading="lazy" draggable={false} />
+                      <img src={src} alt="" loading="lazy" draggable={false} style={{ height: "30px", width: "auto" }} />
                     </HeroLogoItem>
                   ))}
                 </HeroLogoGroup>
                 <HeroLogoGroup aria-hidden>
                   {logoUrls.map((src, idx) => (
                     <HeroLogoItem key={`${src}-${idx}-dup`}>
-                      <img src={src} alt="" loading="lazy" draggable={false} />
+                      <img src={src} alt="" loading="lazy" draggable={false} style={{ height: "30px", width: "auto" }} />
                     </HeroLogoItem>
                   ))}
                 </HeroLogoGroup>
@@ -185,7 +186,6 @@ const App = () => {
             </HeroLogoMarquee>
           </HeroLogoStrip>
         ) : null}
-      </HeroSection>
 
       {/* <CaseSection>
         <CaseInner>

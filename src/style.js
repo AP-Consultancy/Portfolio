@@ -18,10 +18,12 @@ export const Wrapper = styled.div`
 `;
 
 export const HeroSection = styled.section`
-  --hero-pad-x: clamp(1.25rem, 4vw, 4rem);
+  // --hero-pad-x: clamp(1.25rem, 4vw, 4rem);
 
-  padding: clamp(2.75rem, 7vw, 5.5rem) var(--hero-pad-x) 0;
+  // padding: clamp(2.75rem, 7vw, 5.5rem) var(--hero-pad-x) clamp(2.75rem, 7vw, 5.5rem);
+  height: 90vh;
   background: ${colors.bgHero};
+  display: flex;
 `;
 
 export const HeroInner = styled.div`
@@ -39,12 +41,12 @@ export const HeroInner = styled.div`
 `;
 
 export const HeroLogoStrip = styled.div`
-  margin-top: clamp(1.25rem, 3vw, 2rem);
+  margin-top: clamp(0rem, 0vw, 0rem);
   margin-inline: calc(-1 * var(--hero-pad-x));
 `;
 
 export const HeroLogoMarquee = styled.div`
-  --strip-gap: clamp(1rem, 2.5vw, 2.25rem);
+  --strip-gap: clamp(5rem, 2.5vw, 2.25rem);
   --logo-h: clamp(34px, 3.8vw, 44px);
 
   position: relative;
@@ -144,7 +146,7 @@ export const HeroCopy = styled.div`
   .line3 {
     display: block;
     margin-top: 0.45rem;
-    font-size: clamp(2.35rem, 5.2vw, 3.65rem);
+    font-size: clamp(2.35rem, 5.2vw, 2.75rem);
     font-weight: 800;
     letter-spacing: 0.03em;
     line-height: 1.05;
