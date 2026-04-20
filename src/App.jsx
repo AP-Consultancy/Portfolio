@@ -3,6 +3,11 @@ import {
   HeroSection,
   HeroInner,
   HeroCopy,
+  HeroLogoStrip,
+  HeroLogoMarquee,
+  HeroLogoTrack,
+  HeroLogoGroup,
+  HeroLogoItem,
   LogoCollage,
   HeroCollageMotion,
   LogoCard,
@@ -26,6 +31,7 @@ import {
   defaultClientShowcaseData,
 } from "./components/CustomerStoriesSection";
 import TechStackSection, { techData } from "./components/TechStackSection";
+import logoUrls from "virtual:logo-manifest";
 
 
 const App = () => {
@@ -112,6 +118,8 @@ const App = () => {
 
   const heroEase = [0.22, 1, 0.36, 1];
 
+  const hasStripLogos = Array.isArray(logoUrls) && logoUrls.length > 0;
+
   return (
     <Wrapper>
       <HeroSection>
@@ -154,6 +162,29 @@ const App = () => {
             </LogoCollage>
           </HeroCollageMotion>
         </HeroInner>
+
+        {hasStripLogos ? (
+          <HeroLogoStrip aria-hidden>
+            <HeroLogoMarquee>
+              <HeroLogoTrack>
+                <HeroLogoGroup>
+                  {logoUrls.map((src, idx) => (
+                    <HeroLogoItem key={`${src}-${idx}`}>
+                      <img src={src} alt="" loading="lazy" draggable={false} />
+                    </HeroLogoItem>
+                  ))}
+                </HeroLogoGroup>
+                <HeroLogoGroup aria-hidden>
+                  {logoUrls.map((src, idx) => (
+                    <HeroLogoItem key={`${src}-${idx}-dup`}>
+                      <img src={src} alt="" loading="lazy" draggable={false} />
+                    </HeroLogoItem>
+                  ))}
+                </HeroLogoGroup>
+              </HeroLogoTrack>
+            </HeroLogoMarquee>
+          </HeroLogoStrip>
+        ) : null}
       </HeroSection>
 
       {/* <CaseSection>

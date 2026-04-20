@@ -18,7 +18,9 @@ export const Wrapper = styled.div`
 `;
 
 export const HeroSection = styled.section`
-  padding: clamp(2.75rem, 7vw, 5.5rem) clamp(1.25rem, 4vw, 4rem) clamp(2.25rem, 5vw, 4rem);
+  --hero-pad-x: clamp(1.25rem, 4vw, 4rem);
+
+  padding: clamp(2.75rem, 7vw, 5.5rem) var(--hero-pad-x) 0;
   background: ${colors.bgHero};
 `;
 
@@ -33,6 +35,95 @@ export const HeroInner = styled.div`
   @media (min-width: 960px) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
     gap: clamp(1.5rem, 3vw, 2.75rem);
+  }
+`;
+
+export const HeroLogoStrip = styled.div`
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  margin-inline: calc(-1 * var(--hero-pad-x));
+`;
+
+export const HeroLogoMarquee = styled.div`
+  --strip-gap: clamp(1rem, 2.5vw, 2.25rem);
+  --logo-h: clamp(34px, 3.8vw, 44px);
+
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  padding: clamp(0.65rem, 1.2vw, 0.9rem) 0;
+  background: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(36px, 7vw, 96px);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      ${colors.bgHero} 0%,
+      rgba(248, 243, 255, 0) 100%
+    );
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(
+      270deg,
+      ${colors.bgHero} 0%,
+      rgba(248, 243, 255, 0) 100%
+    );
+  }
+`;
+
+export const HeroLogoTrack = styled.div`
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: hero-logo-marquee 26s linear infinite;
+
+  @keyframes hero-logo-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
+
+export const HeroLogoGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--strip-gap);
+  padding-right: var(--strip-gap);
+`;
+
+export const HeroLogoItem = styled.div`
+  flex: 0 0 auto;
+  height: var(--logo-h);
+  display: grid;
+  place-items: center;
+
+  img {
+    display: block;
+    height: 100%;
+    width: auto;
+    opacity: 0.92;
   }
 `;
 

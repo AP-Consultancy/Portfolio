@@ -197,9 +197,9 @@ export const defaultClientShowcaseData = {
         { label: "GitHub Actions CI/CD", dotColor: "#f59e0b" },
       ],
       story: {
-        brand: "acme labs",
+        brand: "",
         caption:
-          "Early-stage SaaS: we stood up their first customer-facing app and deployment pipeline (dummy).",
+          "",
         image: "/UplevylyCard.png",
       },
     },
