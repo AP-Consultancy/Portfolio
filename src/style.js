@@ -99,101 +99,101 @@ export const LogoCollage = styled.div`
   }
 `;
 
-export const HeroCollageMotion = styled(motion.div)`
-  position: relative;
-  width: 100%;
-  max-width: min(520px, 100%);
-  margin: 0 auto;
+// export const HeroCollageMotion = styled(motion.div)`
+//   position: relative;
+//   width: 100%;
+//   max-width: min(520px, 100%);
+//   margin: 0 auto;
 
-  @media (min-width: 960px) {
-    max-width: 540px;
-    margin: 0 0 0 auto;
-  }
-`;
+//   @media (min-width: 960px) {
+//     max-width: 540px;
+//     margin: 0 0 0 auto;
+//   }
+// `;
 
-export const LogoCard = styled(motion.div)`
-  position: absolute;
-  width: var(--card-w);
-  aspect-ratio: 4 / 5;
-  border-radius: clamp(18px, 4vw, 26px);
-  overflow: hidden;
-  background: #fff;
-  transition: box-shadow 0.28s ease, transform 0.28s ease;
-  will-change: transform;
+// export const LogoCard = styled(motion.div)`
+//   position: absolute;
+//   width: var(--card-w);
+//   aspect-ratio: 4 / 5;
+//   border-radius: clamp(18px, 4vw, 26px);
+//   overflow: hidden;
+//   background: #fff;
+//   transition: box-shadow 0.28s ease, transform 0.28s ease;
+//   will-change: transform;
 
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+//   img {
+//     display: block;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
 
-  /* card-1 — left, slightly lower than main (diagonal start) */
-  &.card-1 {
-    top: clamp(22%, 20vw, 30%);
-    left: var(--collage-pad);
-    z-index: 4;
-    box-shadow: var(--shadow-mid);
-    transform: rotate(-1.75deg);
-  }
+//   /* card-1 — left, slightly lower than main (diagonal start) */
+//   &.card-1 {
+//     top: clamp(22%, 20vw, 30%);
+//     left: var(--collage-pad);
+//     z-index: 4;
+//     box-shadow: var(--shadow-mid);
+//     transform: rotate(-1.75deg);
+//   }
 
-  /* card-2 — main hero, centered & elevated (highest z) */
-  &.card-2 {
-    top: clamp(5%, 3vw, 9%);
-    left: 50%;
-    z-index: 6;
-    background: #ffd4cc;
-    box-shadow: var(--shadow-main);
-    transform: translateX(-50%) rotate(0.75deg);
-  }
+//   /* card-2 — main hero, centered & elevated (highest z) */
+//   &.card-2 {
+//     top: clamp(5%, 3vw, 9%);
+//     left: 50%;
+//     z-index: 6;
+//     background: #ffd4cc;
+//     box-shadow: var(--shadow-main);
+//     transform: translateX(-50%) rotate(0.75deg);
+//   }
 
-  /* card-3 — bottom center, behind others */
-  &.card-3 {
-    bottom: var(--collage-pad);
-    left: 50%;
-    top: auto;
-    z-index: 1;
-    background: #1a2744;
-    box-shadow: var(--shadow-back);
-    transform: translateX(-50%) rotate(-1.25deg);
-  }
+//   /* card-3 — bottom center, behind others */
+//   &.card-3 {
+//     bottom: var(--collage-pad);
+//     left: 50%;
+//     top: auto;
+//     z-index: 1;
+//     background: #1a2744;
+//     box-shadow: var(--shadow-back);
+//     transform: translateX(-50%) rotate(-1.25deg);
+//   }
 
-  /*
-   * card-4 — right, partially past edge (~72% in-frame = >40% visible).
-   * Diagonal flow toward BR; kept deliberately modest overlap with main.
-   */
-  &.card-4 {
-    top: clamp(24%, 22vw, 32%);
-    right: var(--collage-pad);
-    z-index: 3;
-    box-shadow: var(--shadow-mid);
-    transform: translateX(28%) rotate(1.75deg);
-  }
+//   /*
+//    * card-4 — right, partially past edge (~72% in-frame = >40% visible).
+//    * Diagonal flow toward BR; kept deliberately modest overlap with main.
+//    */
+//   &.card-4 {
+//     top: clamp(24%, 22vw, 32%);
+//     right: var(--collage-pad);
+//     z-index: 3;
+//     box-shadow: var(--shadow-mid);
+//     transform: translateX(28%) rotate(1.75deg);
+//   }
 
-  &.card-1:hover,
-  &.card-2:hover,
-  &.card-3:hover,
-  &.card-4:hover {
-    box-shadow: 0 22px 52px rgba(25, 15, 45, 0.26);
-  }
+//   &.card-1:hover,
+//   &.card-2:hover,
+//   &.card-3:hover,
+//   &.card-4:hover {
+//     box-shadow: 0 22px 52px rgba(25, 15, 45, 0.26);
+//   }
 
-  &.card-1:hover {
-    transform: rotate(-1.75deg) scale(1.02);
-  }
-  &.card-2:hover {
-    transform: translateX(-50%) rotate(0.75deg) scale(1.02);
-  }
-  &.card-3:hover {
-    transform: translateX(-50%) rotate(-1.25deg) scale(1.02);
-  }
-  &.card-4:hover {
-    transform: translateX(28%) rotate(1.75deg) scale(1.02);
-  }
+//   &.card-1:hover {
+//     transform: rotate(-1.75deg) scale(1.02);
+//   }
+//   &.card-2:hover {
+//     transform: translateX(-50%) rotate(0.75deg) scale(1.02);
+//   }
+//   &.card-3:hover {
+//     transform: translateX(-50%) rotate(-1.25deg) scale(1.02);
+//   }
+//   &.card-4:hover {
+//     transform: translateX(28%) rotate(1.75deg) scale(1.02);
+//   }
 
-  @media (max-width: 479px) {
-    --card-w: 38%;
-  }
-`;
+//   @media (max-width: 479px) {
+//     --card-w: 38%;
+//   }
+// `;
 
 export const CaseSection = styled.section`
   position: relative;
@@ -641,5 +641,69 @@ export const StoryCard = styled(motion.div)`
     line-height: 1.25;
     max-width: 44ch;
     text-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  }
+`;
+
+
+export const HeroCollageMotion = styled(motion.div)`
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: clamp(320px, 40vw, 420px);
+  margin: 0 auto;
+
+  @media (min-width: 960px) {
+    margin-left: auto;
+  }
+`;
+
+export const LogoCard = styled.div`
+  position: absolute;
+  width: clamp(140px, 18vw, 190px);
+  height: clamp(140px, 18vw, 190px);
+  border-radius: 22px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* smoother visual feel */
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  /* Position variants */
+  &.card-1 {
+    top: 50px;
+    left: 40px;
+    z-index: 2;
+  }
+
+  &.card-2 {
+    top: 22px;
+    right: 65px;
+    z-index: 3;
+    transform: rotate(0deg);
+  }
+
+  &.card-3 {
+    bottom: 0;
+    left: 110px;
+    z-index: 1;
+    transform: rotate(0deg);
+  }
+
+  &.card-4 {
+    bottom: 40px;
+    right: 0;
+    z-index: 0;
+    opacity: 0.85;
   }
 `;
