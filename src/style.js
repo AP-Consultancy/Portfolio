@@ -664,10 +664,10 @@ export const StoriesRight = styled.div`
 export const StoryCard = styled(motion.div)`
   position: relative;
   width: min(740px, 100%);
-  height: clamp(240px, 26vw, 320px);
-  border-radius: 12px;
+  height: clamp(300px, 30vw, 400px);
+  border-radius: 13px;
   overflow: hidden;
-  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.25);
+//   box-shadow: 0 22px 60px rgba(15, 23, 42, 0.25);
 
   background: url(${(p) => p.bg}) center/cover no-repeat;
 
@@ -675,11 +675,11 @@ export const StoryCard = styled(motion.div)`
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-        ellipse 80% 70% at 50% 20%,
-        rgba(255, 255, 255, 0.18) 0%,
-        transparent 55%
-      ),
+    // background: radial-gradient(
+    //     ellipse 80% 70% at 50% 20%,
+    //     rgba(253, 253, 253, 0.18) 0%,
+    //     transparent 55%
+    //   ),
       linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 100%);
   }
 

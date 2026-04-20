@@ -177,41 +177,41 @@ export function CustomerStoriesSection({
 /** Dummy portfolio data — replace with real client metrics and copy when ready. */
 export const defaultClientShowcaseData = {
   title: "A few teams we’ve built and shipped product with",
-  tabs: ["Acme Labs", "Northwind", "Globex"],
+  tabs: ["Acuity", "HDFC", "Telus", "Propic", "AstraZeneca"],
   storiesLink: { href: "#", label: "View all client work →" },
   slides: [
     {
       stats: [
         {
-          value: "12 weeks",
-          label: "from kickoff to production MVP (dummy)",
+          value: "Customer Journey Data Modeling",
+          label: "Designed scalable data model to capture end-to-end customer interactions across multiple touchpoints",
         },
         {
-          value: "40%",
-          label: "estimated ops cost reduction post-migration (dummy)",
+          value: "Analytics & Campaign Insights",
+          label: "Enabled structured datasets for reporting on customer engagement and campaign",
         },
       ],
       products: [
-        { label: "React / TypeScript", dotColor: "#60a5fa" },
-        { label: "Node.js on AWS", dotColor: "#22c55e" },
-        { label: "GitHub Actions CI/CD", dotColor: "#f59e0b" },
+        { label: "Python / Langchain / SQL", dotColor: "#60a5fa" },
+        { label: "AWS / Podman / Airweave ", dotColor: "#22c55e" },
+        { label: "GitHub Actions CI/CD / Factset / PG vector", dotColor: "#f59e0b" },
       ],
       story: {
         brand: "",
         caption:
           "",
-        image: "/UplevylyCard.png",
+        image: "/Card/Acuity.png",
       },
     },
     {
       stats: [
         {
-          value: "3 regions",
-          label: "multi-region rollout for lower latency (dummy)",
+          value: "HDFC Digital Experience Optimization Project",
+          label: "worked on refining the content management system and optimizing performance for HDFC’s digital platforms. Role involved improving how content is structured, managed, and delivered to ensure a seamless user experience.",
         },
         {
-          value: "99.95%",
-          label: "uptime target in the first quarter after launch (dummy)",
+          value: "Performance Optimization",
+          label: "worked on improving system performance by optimizing backend processes and frontend delivery. These improvements resulted in faster page loads and a smoother user experience.",
         },
       ],
       products: [
@@ -220,21 +220,66 @@ export const defaultClientShowcaseData = {
         { label: "Datadog / Grafana", dotColor: "#f59e0b" },
       ],
       story: {
-        brand: "northwind",
+        brand: "",
         caption:
-          "Growth-stage platform: observability and safer releases across squads (dummy).",
-        image: "/PropicCard.png",
+          "",
+        image: "/Card/hdfc.png",
       },
     },
     {
       stats: [
         {
-          value: "50k+",
-          label: "internal users on the modernized admin suite (dummy)",
+          value: "Ticket Management System Development",
+          label: "Worked on Synapse, a multi-client customer support ticketing platform to manage and track issues efficiently",
         },
         {
-          value: "SOC 2",
-          label: "readiness track we supported alongside their security team (dummy)",
+          value: "Performance & User Experience Optimization",
+          label: "Improved system performance and responsiveness for handling multiple clients. Enhanced user experience by optimizing workflow and ensuring reliable, scalable operations",
+        },
+      ],
+      products: [
+        { label: "ReactJS / NodeJS / JavaScript", dotColor: "#60a5fa" },
+        { label: "PostgreSQL / Third Party API", dotColor: "#22c55e" },
+        { label: "SSO Login", dotColor: "#f59e0b" },
+      ],
+      story: {
+        brand: "",
+        caption:
+          "",
+        image: "/Card/telus.png",
+      },
+    },
+    {
+      stats: [
+        {
+          value: "Real Estate AI Automation Platform",
+          label: "worked on developing and integrating AI-based features into the Propic platform to enhance automation in real estate workflows. Role included building backend services, creating interactive frontend interfaces, and implementing AI-",
+        },
+        {
+          value: "Property Management",
+          label: "contributed to automating lease enquiries, invoice follow-ups, and maintenance requests. This improved operational efficiency and reduced manual intervention for property managers.",
+        },
+      ],
+      products: [
+        { label: ".NET / Angular", dotColor: "#60a5fa" },
+        { label: "Azure / OpenAI", dotColor: "#22c55e" },
+      ],
+      story: {
+        brand: "",
+        caption:
+          "",
+        image: "/Card/propic.png",
+      },
+    },
+    {
+      stats: [
+        {
+          value: "Scalable Data & Operations Enhancement",
+          label: "Enhancing system scalability and optimizing data handling to support large-scale operations. Role involved improving how data flows across the system, ensuring it could efficiently handle high volumes of healthcare and operational data.",
+        },
+        {
+          value: "Operational Efficiency",
+          label: "The improvements reduced system bottlenecks and enhanced response times. This enabled smoother workflows and supported efficient operations across different business functions.",
         },
       ],
       products: [
@@ -243,10 +288,10 @@ export const defaultClientShowcaseData = {
         { label: "Service mesh rollout", dotColor: "#f59e0b" },
       ],
       story: {
-        brand: "globex",
+        brand: "",
         caption:
-          "Enterprise modernization: phased cutover with zero big-bang downtime (dummy).",
-        image: "/UplevylyCard.png",
+          "",
+        image: "/Card/astrazeneca.png",
       },
     },
   ],
