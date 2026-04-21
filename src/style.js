@@ -639,7 +639,7 @@ export const BackLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 800;
+  font-weight: 500;
   color: #0b1220;
   text-decoration: none;
   opacity: 0.9;
@@ -751,7 +751,7 @@ export const ClientCardMedia = styled.div`
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(15, 23, 42, 0.1);
     backdrop-filter: blur(12px);
-    font-weight: 900;
+    font-weight: 600;
     color: #0b1220;
     letter-spacing: -0.02em;
   }
