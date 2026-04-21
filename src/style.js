@@ -564,7 +564,7 @@ export const Eyebrow = styled.div`
 export const StoriesTitle = styled.h2`
   margin: 0;
   width: 100%;
-  font-size: clamp(1.35rem, 4.2vw, 3.05rem);
+ font-size: clamp(0.95rem, 2.8vw, 2rem);
   line-height: 1.15;
   letter-spacing: -0.03em;
   font-weight: 800;

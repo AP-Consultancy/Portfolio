@@ -184,7 +184,7 @@ export function CustomerStoriesSection({
 
 /** Dummy portfolio data — replace with real client metrics and copy when ready. */
 export const defaultClientShowcaseData = {
-  title: "A few teams we’ve built and shipped product with",
+  title: "A FEW TEAMS WE’VE BUILT AND SHIPPED PRODUCT WITH",
   tabs: ["Acuity", "HDFC", "Telus", "Propic", "AstraZeneca"],
   storiesLink: { href: "/client-work", label: "View all client work →" },
   slides: [

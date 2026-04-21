@@ -1,4 +1,5 @@
 import { AnimatePresence, motion as Motion } from "framer-motion";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   BackLink,
@@ -16,10 +17,38 @@ import {
   PageTitle,
 } from "../style";
 import { clientWorkCards, clientWorkPageCopy } from "./clientWork.data";
+import projectsData from "../data/data";
+import ProjectModal from "../components/ProjectModal";
 
 const ease = [0.22, 1, 0.36, 1];
 
 export default function ClientWorkPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedKey, setSelectedKey] = useState(null);
+
+  const selectedCard = useMemo(() => {
+    if (!selectedKey) return clientWorkCards?.[0] ?? null;
+    return clientWorkCards?.find((c) => c.key === selectedKey) ?? null;
+  }, [selectedKey]);
+
+  const modalProject = useMemo(() => {
+    if (!Array.isArray(projectsData) || projectsData.length === 0) return null;
+    const base = projectsData[0];
+    const label =
+      selectedCard?.client || selectedCard?.title || base?.title || "Project";
+
+    const key = selectedCard?.imageFilename || selectedCard?.key || null;
+    const needle = String(label).trim().toLowerCase();
+    const match =
+      (key ? projectsData.find((p) => p?.key === key) : null) ??
+      projectsData.find(
+        (p) => String(p?.title ?? "").trim().toLowerCase() === needle
+      ) ??
+      base;
+
+    return { ...match, title: label };
+  }, [selectedCard]);
+
   return (
     <PageShell>
       <PageHeader>
@@ -55,6 +84,20 @@ export default function ClientWorkPage() {
               }}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25, ease }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Open ${it.client} details`}
+              onClick={() => {
+                setSelectedKey(it.key);
+                setIsModalOpen(true);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedKey(it.key);
+                  setIsModalOpen(true);
+                }
+              }}
             >
               <ClientCardMedia>
                 <Motion.img
@@ -91,6 +134,13 @@ export default function ClientWorkPage() {
           ))}
         </ClientGrid>
       </AnimatePresence>
+
+      <ProjectModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        project={modalProject}
+        iconSrc={selectedCard?.imageUrl}
+      />
     </PageShell>
   );
 }
