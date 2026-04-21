@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion as Motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   StoriesSection,
   StoriesInner,
@@ -79,6 +80,9 @@ export function CustomerStoriesSection({
 
   if (!slide) return null;
 
+  const linkHref = storiesLink?.href;
+  const isInternalRoute = typeof linkHref === "string" && linkHref.startsWith("/");
+
   return (
     <StoriesSection>
       <StoriesInner
@@ -103,9 +107,13 @@ export function CustomerStoriesSection({
               ))}
               {storiesLink ? (
                 <StoriesLink
-                  href={storiesLink.href}
+                  as={isInternalRoute ? Link : "a"}
+                  {...(isInternalRoute
+                    ? { to: linkHref }
+                    : { href: linkHref, target: storiesLink.target })}
+                  rel={storiesLink.target === "_blank" ? "noreferrer" : undefined}
                   onClick={(e) => {
-                    if (storiesLink.href === "#") e.preventDefault();
+                    if (!linkHref || linkHref === "#") e.preventDefault();
                   }}
                 >
                   {storiesLink.label}
@@ -159,11 +167,11 @@ export function CustomerStoriesSection({
                 exit={{ opacity: 0, x: -64 }}
                 transition={{ duration: 0.9, ease }}
               >
-                <div className="brand">
+                {/* <div className="brand">
                   <span className="brandMark" />
                   {slide.story.brand}
-                </div>
-                <div className="bookmark">≡</div>
+                </div> */}
+
                 <div className="caption">{slide.story.caption}</div>
               </StoryCard>
             </AnimatePresence>
@@ -178,7 +186,7 @@ export function CustomerStoriesSection({
 export const defaultClientShowcaseData = {
   title: "A few teams we’ve built and shipped product with",
   tabs: ["Acuity", "HDFC", "Telus", "Propic", "AstraZeneca"],
-  storiesLink: { href: "#", label: "View all client work →" },
+  storiesLink: { href: "/client-work", label: "View all client work →" },
   slides: [
     {
       stats: [

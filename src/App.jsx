@@ -26,15 +26,16 @@ import {
 } from "./style";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion as Motion } from "framer-motion";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import {
   CustomerStoriesSection,
   defaultClientShowcaseData,
 } from "./components/CustomerStoriesSection";
 import TechStackSection, { techData } from "./components/TechStackSection";
 import logoUrls from "virtual:logo-manifest";
+import ClientWorkPage from "./pages/ClientWorkPage";
 
-
-const App = () => {
+const HomePage = () => {
   const [caseIdx, setCaseIdx] = useState(0);
   const [heroCollageKey, setHeroCollageKey] = useState(0);
 
@@ -272,6 +273,17 @@ const App = () => {
       <CustomerStoriesSection {...defaultClientShowcaseData} />
       <TechStackSection data={techData} />;
     </Wrapper>
+  );
+};
+
+const App = () => {
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/client-work" element={<ClientWorkPage />} />
+      </Routes>
+    </HashRouter>
   );
 };
 

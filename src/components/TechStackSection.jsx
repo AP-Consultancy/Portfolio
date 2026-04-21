@@ -13,6 +13,10 @@ const Title = styled.h2`
   color: #1e293b;
   max-width: 900px;
   margin: 0 auto 16px;
+
+  @media (max-width: 640px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Highlight = styled.span`
@@ -84,8 +88,8 @@ export default function TechStackSection({ data }) {
   return (
     <Section>
       <Title>
-        Hire Dedicated Remote Developers from India{" "}
-        <Highlight>Skilled</Highlight> in Web & Mobile App Development
+        Hire Dedicated Remote Developers{" "}
+        {/* <Highlight>Skilled</Highlight> in Web & Mobile App Development */}
       </Title>
 
       <Subtitle>

@@ -18,12 +18,18 @@ export const Wrapper = styled.div`
 `;
 
 export const HeroSection = styled.section`
-  // --hero-pad-x: clamp(1.25rem, 4vw, 4rem);
+  --hero-pad-x: clamp(1.25rem, 4vw, 4rem);
 
-  // padding: clamp(2.75rem, 7vw, 5.5rem) var(--hero-pad-x) clamp(2.75rem, 7vw, 5.5rem);
-  height: 90vh;
+  padding: clamp(1.25rem, 4vw, 2.5rem) var(--hero-pad-x)
+    clamp(1.25rem, 4vw, 2.75rem);
+  min-height: 90vh;
   background: ${colors.bgHero};
   display: flex;
+
+  @media (max-width: 640px) {
+    min-height: auto;
+    padding: 1.1rem 1.05rem 1.4rem;
+  }
 `;
 
 export const HeroInner = styled.div`
@@ -31,12 +37,12 @@ export const HeroInner = styled.div`
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(2.5rem, 5vw, 4rem);
+  gap: clamp(1.25rem, 4vw, 2.25rem);
   align-items: center;
 
   @media (min-width: 960px) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
-    gap: clamp(1.5rem, 3vw, 2.75rem);
+    gap: clamp(1.25rem, 2.2vw, 2rem);
   }
 `;
 
@@ -532,11 +538,20 @@ export const StoriesBody = styled.div`
   @media (min-width: 960px) {
     grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.45fr);
   }
+
+  @media (max-width: 640px) {
+    align-items: start;
+  }
 `;
 
 export const StoriesLeft = styled.div`
   text-align: left;
   max-width: 460px;
+
+  @media (max-width: 640px) {
+    max-width: none;
+    width: 100%;
+  }
 `;
 
 export const Eyebrow = styled.div`
@@ -595,6 +610,196 @@ export const StoriesLink = styled.a`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const PageShell = styled.div`
+  font-family: "Montserrat", system-ui, sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(
+      900px 420px at 20% 10%,
+      rgba(111, 95, 220, 0.18),
+      rgba(255, 255, 255, 0) 55%
+    ),
+    radial-gradient(
+      840px 460px at 80% 0%,
+      rgba(34, 197, 94, 0.12),
+      rgba(255, 255, 255, 0) 56%
+    ),
+    linear-gradient(180deg, #ffffff, #f8fafc);
+  padding: clamp(1.1rem, 3vw, 2.2rem);
+`;
+
+export const PageHeader = styled.div`
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0.25rem 0 1.2rem;
+`;
+
+export const BackLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  color: #0b1220;
+  text-decoration: none;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+  transition: transform 140ms ease, opacity 140ms ease, background 140ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.9);
+  }
+`;
+
+export const PageTitle = styled.h1`
+  margin: 0;
+  font-size: clamp(1.8rem, 4.4vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  font-weight: 900;
+  color: #0b1220;
+`;
+
+export const PageSub = styled.p`
+  margin: 0.65rem 0 0;
+  max-width: 62ch;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: #475569;
+`;
+
+export const ClientGrid = styled.div`
+  max-width: 1180px;
+  margin: 1.25rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.05rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+
+  @media (min-width: 1040px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+`;
+
+export const ClientCard = styled.div`
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+  transform: translateZ(0);
+`;
+
+export const ClientCardMedia = styled.div`
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: radial-gradient(
+      600px 240px at 20% 20%,
+      rgba(111, 95, 220, 0.25),
+      rgba(255, 255, 255, 0) 55%
+    ),
+    radial-gradient(
+      520px 260px at 85% 30%,
+      rgba(34, 197, 94, 0.18),
+      rgba(255, 255, 255, 0) 58%
+    ),
+    linear-gradient(135deg, #0b1220, #111827);
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.05) contrast(1.03);
+    transform: translateZ(0);
+  }
+
+  .mediaOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.05),
+      rgba(15, 23, 42, 0.55)
+    );
+    pointer-events: none;
+  }
+
+  .mediaCaption {
+    position: absolute;
+    left: 1rem;
+    bottom: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    backdrop-filter: blur(12px);
+    font-weight: 900;
+    color: #0b1220;
+    letter-spacing: -0.02em;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+    background: #6f5fdc;
+    box-shadow: 0 12px 30px rgba(111, 95, 220, 0.32);
+  }
+`;
+
+export const ClientCardBody = styled.div`
+  padding: 1rem 1.05rem 1.15rem;
+`;
+
+export const ClientCardTitle = styled.h3`
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #0b1220;
+  line-height: 1.15;
+`;
+
+export const ClientCardDesc = styled.p`
+  margin: 0.55rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #475569;
+`;
+
+export const ClientCardChips = styled.div`
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+export const Chip = styled.span`
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: rgba(11, 18, 32, 0.85);
+  background: rgba(111, 95, 220, 0.1);
+  border: 1px solid rgba(111, 95, 220, 0.18);
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
 `;
 
 export const Stats = styled.div`
@@ -658,6 +863,10 @@ export const StoriesRight = styled.div`
 
   @media (min-width: 960px) {
     justify-content: flex-end;
+  }
+
+  @media (max-width: 640px) {
+    justify-content: center;
   }
 `;
 
@@ -734,6 +943,19 @@ export const StoryCard = styled(motion.div)`
     line-height: 1.25;
     max-width: 44ch;
     text-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  }
+
+  @media (max-width: 640px) {
+    height: clamp(220px, 62vw, 320px);
+    border-radius: 16px;
+    background-position: top center;
+
+    .caption {
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      max-width: 100%;
+    }
   }
 `;
 
