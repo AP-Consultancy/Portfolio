@@ -51,16 +51,40 @@ export default function ClientWorkPage() {
 
   return (
     <PageShell>
-      <PageHeader>
-        <BackLink as={Link} to="/">
-          ← Back to home
-        </BackLink>
-        <PageTitle>{clientWorkPageCopy.title}</PageTitle>
-        <PageSub>
-          {clientWorkPageCopy.subtitle}
-        </PageSub>
-      </PageHeader>
+       <div style={{ position: "absolute", top: "20px", left: "24px", zIndex: 10}}>
+        <img
+          src="/public/logo/ap.png"   
+          alt="Company Logo"
+          style={{ height: "40px", width: "auto" }}
+        />
+      </div>
+      <PageHeader style={{ marginTop: "5rem" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column", 
+          gap: "8px",
+        }}
+      >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <PageTitle>{clientWorkPageCopy.title}</PageTitle>
 
+            <BackLink as={Link} to="/" style={{ marginBottom: 0 }} >
+              ← Back to home
+            </BackLink>
+          </div>
+
+          <PageSub>
+            {clientWorkPageCopy.subtitle}
+          </PageSub>
+      </div>
+    </PageHeader>
       <AnimatePresence>
         <ClientGrid
           as={Motion.div}

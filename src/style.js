@@ -20,25 +20,37 @@ export const Wrapper = styled.div`
 export const HeroSection = styled.section`
   --hero-pad-x: clamp(1.25rem, 4vw, 4rem);
 
-  padding: clamp(1.25rem, 4vw, 2.5rem) var(--hero-pad-x)
-    clamp(1.25rem, 4vw, 2.75rem);
+  padding: clamp(1.25rem, 4vw, 2.5rem) var(--hero-pad-x) clamp(1.25rem, 4vw, 2.75rem);
   min-height: 90vh;
   background: ${colors.bgHero};
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 1100px) {   
+    min-height: auto;
+    padding: 2.5rem 2rem 2.5rem;
+  }
 
   @media (max-width: 640px) {
-    min-height: auto;
-    padding: 1.1rem 1.05rem 1.4rem;
+    padding: 1.1rem 1.05rem 4.4rem;
   }
 `;
-
 export const HeroInner = styled.div`
+  position: relative;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(1.25rem, 4vw, 2.25rem);
   align-items: center;
+
+  @media (max-width: 640px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   @media (min-width: 960px) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
@@ -179,6 +191,7 @@ export const LogoCollage = styled.div`
 
   position: relative;
   width: 100%;
+  height: 100%; 
   max-width: min(520px, 100%);
   margin: 0 auto;
   padding: var(--collage-pad);
@@ -959,24 +972,38 @@ export const StoryCard = styled(motion.div)`
   }
 `;
 
-
 export const HeroCollageMotion = styled(motion.div)`
   position: relative;
   width: 100%;
   max-width: 520px;
-  height: clamp(320px, 40vw, 420px);
+  height: clamp(360px, 42vw, 480px);
   margin: 0 auto;
+
+  @media (max-width: 640px) {
+    height: clamp(280px, 70vw, 360px);
+    max-width: 340px;
+  }
+
+  @media (min-width: 641px) and (max-width: 959px) {
+    height: clamp(320px, 46vw, 420px);
+    max-width: 420px;
+  }
+  @media (min-width: 960px) and (max-width: 1100px) {
+  max-width: 380px;          /* ← shrink container so it doesn't eat into text */
+  height: clamp(300px, 38vw, 380px);
+}
 
   @media (min-width: 960px) {
     margin-left: auto;
+    margin-right: 0;
   }
 `;
 
 export const LogoCard = styled.div`
   position: absolute;
-  width: clamp(140px, 18vw, 190px);
-  height: clamp(140px, 18vw, 190px);
-  border-radius: 22px;
+  width: clamp(120px, 13vw, 200px);
+  height: calc(clamp(120px, 13vw, 200px) * 1.22);  /* 257:314 ratio */
+  border-radius: 35px;
   overflow: hidden;
   background: white;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
@@ -987,38 +1014,49 @@ export const LogoCard = styled.div`
     object-fit: cover;
   }
 
-  /* smoother visual feel */
   transition: transform 0.3s ease;
+  &:hover { transform: translateY(-6px) scale(1.02); }
 
-  &:hover {
-    transform: translateY(-6px) scale(1.02);
-  }
 
-  /* Position variants */
-  &.card-1 {
-    top: 50px;
-    left: 40px;
-    z-index: 2;
-  }
+  &.card-1 { top: 20%;  left: -10%;  z-index: 2; }   
+&.card-2 { top: 0%;   left: 28%;  z-index: 4; }  
+&.card-3 { top: 52%;  left: 12%;  z-index: 1; }  
+&.card-4 { top: 40%;  left: 50%;  z-index: 3; }  
 
-  &.card-2 {
-    top: 22px;
-    right: 65px;
-    z-index: 3;
-    transform: rotate(0deg);
-  }
+@media (max-width: 959px) {
+  &.card-1 { top: 18%;  left: 10%;   }
+  &.card-2 { top: 10%;   left: 40%;  }
+  &.card-3 { top: 45%;  left: 20%;  }
+  &.card-4 { top: 37%;  left: 50%;  }
+}
 
-  &.card-3 {
-    bottom: 0;
-    left: 110px;
-    z-index: 1;
-    transform: rotate(0deg);
-  }
+@media (min-width: 960px) and (max-width: 1100px) {
+ 
+  border-radius: 24px;
 
-  &.card-4 {
-    bottom: 40px;
-    right: 0;
-    z-index: 0;
-    opacity: 0.85;
+  &.card-1 { top: 20%;  left: -10%;  }
+  &.card-2 { top: 0%;   left: 28%;  }
+  &.card-3 { top: 55%;  left: 10%;  }
+  &.card-4 { top: 35%;  left: 47%;  }
+}
+
+@media (max-width: 640px) {
+  &.card-1 { top: 20%;  left: 0%;   }
+  &.card-2 { top: 0%;   left: 38%;  }
+  &.card-3 { top: 60%;  left: 16%;   }
+  &.card-4 { top: 35%;  left:53%;  }
+}
+`;
+export const GlobalStylesFix = styled.div`
+  .hero-logo {
+    padding: 4px 0 0 0;
+    margin-bottom: 8px;   /* small gap before the grid */
+    z-index: 10;
+
+    img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
   }
 `;

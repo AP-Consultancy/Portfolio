@@ -34,6 +34,7 @@ import {
 import TechStackSection, { techData } from "./components/TechStackSection";
 import logoUrls from "virtual:logo-manifest";
 import ClientWorkPage from "./pages/ClientWorkPage";
+import { GlobalStylesFix } from "./style";
 
 const HomePage = () => {
   const [caseIdx, setCaseIdx] = useState(0);
@@ -122,157 +123,171 @@ const HomePage = () => {
   const hasStripLogos = Array.isArray(logoUrls) && logoUrls.length > 0;
 
   return (
-    <Wrapper>
-      <HeroSection>
+    <GlobalStylesFix>
+      <Wrapper>
+        <HeroSection>
+        <div
+            className="hero-logo"
+          >
+            <img
+              src="/logo/ap.png"
+              alt="Company Logo"
+              style={{
+                height: "36px",
+                width: "auto",
+              }}
+            />
+          </div>
         <HeroInner
-          onWheel={handleHeroWheel}
-          onTouchStart={onHeroTouchStart}
-          onTouchEnd={onHeroTouchEnd}
-        >
-          <Motion.div
-            initial={{ opacity: 0, x: -28 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: heroEase }}
+            onWheel={handleHeroWheel}
+            onTouchStart={onHeroTouchStart}
+            onTouchEnd={onHeroTouchEnd}
           >
-            <HeroCopy>
-              <span className="line1">Engineered for scale.</span>
-              <span className="line2">Trusted by millions of</span>
-              <span className="line3">Growing Enterprises.</span>
-            </HeroCopy>
-          </Motion.div>
+            <Motion.div
+              initial={{ opacity: 0, x: -28 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: heroEase }}
+            >
+              <HeroCopy>
+                <span className="line1">Engineered for scale.</span>
+                <span className="line2">Trusted by millions of</span>
+                <span className="line3">Growing Enterprises.</span>
+              </HeroCopy>
+            </Motion.div>
 
-          <HeroCollageMotion
-            key={heroCollageKey}
-            initial={{ opacity: 0, x: 80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.05, ease: heroEase }}
-          >
-            <LogoCollage>
-              <LogoCard className="card-1">
-                <img src="/salesforce.png" alt="Salesforce" />
-              </LogoCard>
-              <LogoCard className="card-2">
-                <img src="/uplevyl.png" alt="Uplevyl" />
-              </LogoCard>
-              <LogoCard className="card-3">
-                <img src="/nike.png" alt="Nike" />
-              </LogoCard>
-              <LogoCard className="card-4">
-                <img src="/astrazeneca.png" alt="AstraZeneca" />
-              </LogoCard>
-            </LogoCollage>
-          </HeroCollageMotion>
-        </HeroInner>
+            <HeroCollageMotion
+              key={heroCollageKey}
+              initial={{ opacity: 0, x: 80 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.05, ease: heroEase }}
+            >
+              <LogoCollage>
+                <LogoCard className="card-1">
+                  <img src="/salesforce.png" alt="Salesforce" />
+                </LogoCard>
+                <LogoCard className="card-2">
+                  <img src="/uplevyl.png" alt="Uplevyl" />
+                </LogoCard>
+                <LogoCard className="card-3">
+                  <img src="/nike.png" alt="Nike" />
+                </LogoCard>
+                <LogoCard className="card-4">
+                  <img src="/astrazeneca.png" alt="AstraZeneca" />
+                </LogoCard>
+              </LogoCollage>
+            </HeroCollageMotion>
+          </HeroInner>
 
-      </HeroSection>
-        {hasStripLogos ? (
-          <HeroLogoStrip aria-hidden>
-            <HeroLogoMarquee>
-              <HeroLogoTrack>
-                <HeroLogoGroup>
-                  {logoUrls.map((src, idx) => (
-                    <HeroLogoItem key={`${src}-${idx}`}>
-                      <img src={src} alt="" loading="lazy" draggable={false} style={{ height: "30px", width: "auto" }} />
-                    </HeroLogoItem>
-                  ))}
-                </HeroLogoGroup>
-                <HeroLogoGroup aria-hidden>
-                  {logoUrls.map((src, idx) => (
-                    <HeroLogoItem key={`${src}-${idx}-dup`}>
-                      <img src={src} alt="" loading="lazy" draggable={false} style={{ height: "30px", width: "auto" }} />
-                    </HeroLogoItem>
-                  ))}
-                </HeroLogoGroup>
-              </HeroLogoTrack>
-            </HeroLogoMarquee>
-          </HeroLogoStrip>
-        ) : null}
+        </HeroSection>
+          {hasStripLogos ? (
+            <HeroLogoStrip aria-hidden>
+              <HeroLogoMarquee>
+                <HeroLogoTrack>
+                  <HeroLogoGroup>
+                    {logoUrls.map((src, idx) => (
+                      <HeroLogoItem key={`${src}-${idx}`}>
+                        <img src={src} alt="" loading="lazy" draggable={false} style={{ height: "30px", width: "auto" }} />
+                      </HeroLogoItem>
+                    ))}
+                  </HeroLogoGroup>
+                  <HeroLogoGroup aria-hidden>
+                    {logoUrls.map((src, idx) => (
+                      <HeroLogoItem key={`${src}-${idx}-dup`}>
+                        <img src={src} alt="" loading="lazy" draggable={false} style={{ height: "30px", width: "auto" }} />
+                      </HeroLogoItem>
+                    ))}
+                  </HeroLogoGroup>
+                </HeroLogoTrack>
+              </HeroLogoMarquee>
+            </HeroLogoStrip>
+          ) : null}
 
-      {/* <CaseSection>
-        <CaseInner>
-          <Motion.div
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.75 }}
-          >
-            <CaseHeading>
-              <span className="sub">
-                Turning complex infrastructure into seamless
-              </span>
-              <span className="emph">Digital Growth.</span>
-            </CaseHeading>
-          </Motion.div>
+        {/* <CaseSection>
+          <CaseInner>
+            <Motion.div
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.75 }}
+            >
+              <CaseHeading>
+                <span className="sub">
+                  Turning complex infrastructure into seamless
+                </span>
+                <span className="emph">Digital Growth.</span>
+              </CaseHeading>
+            </Motion.div>
 
-          <Content>
-            <AnimatePresence mode="wait">
-              <Motion.div
-                key={`case-left-${caseIdx}`}
-                initial={{ opacity: 0, x: 48 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -48 }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <TextBlock>
-                  <p>
-                    <span className="label">Case-</span> {cases[caseIdx].title}
-                  </p>
-                  <p>
-                    <span className="label">Growth-</span>{" "}
-                    {cases[caseIdx].growth}
-                  </p>
-                  <p>
-                    <span className="label">Tool Used-</span>{" "}
-                    {cases[caseIdx].tools}
-                  </p>
-                </TextBlock>
-              </Motion.div>
-            </AnimatePresence>
+            <Content>
+              <AnimatePresence mode="wait">
+                <Motion.div
+                  key={`case-left-${caseIdx}`}
+                  initial={{ opacity: 0, x: 48 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -48 }}
+                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <TextBlock>
+                    <p>
+                      <span className="label">Case-</span> {cases[caseIdx].title}
+                    </p>
+                    <p>
+                      <span className="label">Growth-</span>{" "}
+                      {cases[caseIdx].growth}
+                    </p>
+                    <p>
+                      <span className="label">Tool Used-</span>{" "}
+                      {cases[caseIdx].tools}
+                    </p>
+                  </TextBlock>
+                </Motion.div>
+              </AnimatePresence>
 
-            <AnimatePresence mode="wait">
-              <PropicCard
-                key={`case-right-${caseIdx}`}
-                whileHover={{ scale: 1.015 }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                initial={{ opacity: 0, x: 64 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -64 }}
-                viewport={{ once: false, amount: 0.25 }}
-                onWheel={handleWheel}
-                onTouchStart={onTouchStart}
-                onTouchEnd={onTouchEnd}
-              >
-                <PropicSkyline aria-hidden>
-                  <span />
-                  <span />
-                  <span />
-                  <span />
-                  <span />
-                </PropicSkyline>
-                <PropicTitle>
-                  prop
-                  <PropicI>
-                    <PropicDots>
-                      <i />
-                      <i />
-                      <i />
-                    </PropicDots>
-                    i
-                  </PropicI>
-                  c
-                </PropicTitle>
-                <PropicBar>
-                  <p>{cases[caseIdx].tagline}</p>
-                </PropicBar>
-              </PropicCard>
-            </AnimatePresence>
-          </Content>
-        </CaseInner>
-      </CaseSection> */}
+              <AnimatePresence mode="wait">
+                <PropicCard
+                  key={`case-right-${caseIdx}`}
+                  whileHover={{ scale: 1.015 }}
+                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                  initial={{ opacity: 0, x: 64 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -64 }}
+                  viewport={{ once: false, amount: 0.25 }}
+                  onWheel={handleWheel}
+                  onTouchStart={onTouchStart}
+                  onTouchEnd={onTouchEnd}
+                >
+                  <PropicSkyline aria-hidden>
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                  </PropicSkyline>
+                  <PropicTitle>
+                    prop
+                    <PropicI>
+                      <PropicDots>
+                        <i />
+                        <i />
+                        <i />
+                      </PropicDots>
+                      i
+                    </PropicI>
+                    c
+                  </PropicTitle>
+                  <PropicBar>
+                    <p>{cases[caseIdx].tagline}</p>
+                  </PropicBar>
+                </PropicCard>
+              </AnimatePresence>
+            </Content>
+          </CaseInner>
+        </CaseSection> */}
 
-      <CustomerStoriesSection {...defaultClientShowcaseData} />
-      <TechStackSection data={techData} />;
-    </Wrapper>
+        <CustomerStoriesSection {...defaultClientShowcaseData} />
+        <TechStackSection data={techData} />;
+      </Wrapper>
+    </GlobalStylesFix>
   );
 };
 
