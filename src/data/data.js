@@ -2,6 +2,7 @@ const projectsData = [
   {
     key: "Acuity.png",
     title: "Acuity Analytics",
+    subhead: "Unified analytics platform enabling faster, trusted financial insights.",
     challenge:
       "Financial data lived across multiple sources, slowing reporting and making it hard for teams to trust a single version of truth.",
     solution:
@@ -17,6 +18,7 @@ const projectsData = [
   {
     key: "hdfc.png",
     title: "HDFC Bank",
+    subhead: "Digital-first loan onboarding with seamless workflows and validation.",
     challenge:
       "Manual and fragmented application flows slowed approvals, increased operational overhead, and led to user drop-offs.",
     solution:
@@ -40,6 +42,7 @@ const projectsData = [
   {
     key: "telus.png",
     title: "Telus",
+    subhead: "Scalable workflow systems for high-performance customer operations.",
     challenge:
       "Support and workflow systems needed to scale reliably across multiple clients while maintaining fast response times.",
     solution:
@@ -55,6 +58,7 @@ const projectsData = [
   {
     key: "propic.png",
     title: "Propic",
+    subhead: "AI-driven automation to streamline real estate workflows.",
     challenge:
       "Real estate teams were spending time on repetitive follow-ups and lacked automation across key operational workflows.",
     solution:
@@ -70,6 +74,7 @@ const projectsData = [
   {
     key: "astrazeneca.png",
     title: "AstraZeneca",
+    subhead: "Optimized enterprise systems for scalable healthcare operations.",
     challenge:
       "Large-scale operational and healthcare data required more efficient flows and better scalability to reduce bottlenecks.",
     solution:
@@ -85,6 +90,7 @@ const projectsData = [
   {
     key: "salesforce.png",
     title: "Salesforce",
+    subhead: "Customized CRM automation for efficient sales operations.",
     challenge:
       "Enterprise CRM teams needed tailored automation and cleaner workflows to reduce manual work and improve consistency.",
     solution:
@@ -100,6 +106,7 @@ const projectsData = [
   {
     key: "uplevyl.png",
     title: "Uplevyl",
+    subhead: "Personalized engagement with scalable analytics-driven experiences.",
     challenge:
       "Growth required better engagement tracking and personalized experiences without sacrificing performance.",
     solution:
@@ -115,6 +122,7 @@ const projectsData = [
   {
     key: "Tailoredbrands.png",
     title: "Tailored Brands",
+    subhead: "Omnichannel retail systems with scalable backend services.",
     challenge:
       "Omnichannel operations needed better inventory visibility and systems that could scale across peak demand.",
     solution:
@@ -130,6 +138,7 @@ const projectsData = [
   {
     key: "bathfitter.png",
     title: "Bath Fitter",
+    subhead: "Digitized scheduling with real-time workflow visibility.",
     challenge:
       "Scheduling and order workflows were fragmented, leading to delays and limited real-time visibility for teams.",
     solution:
@@ -145,6 +154,7 @@ const projectsData = [
   {
     key: "agilty insights.png",
     title: "Agility Insights",
+    subhead: "Centralized BI platform for faster, consistent decision-making.",
     challenge:
       "Business reporting was slowed by siloed data and inconsistent definitions across teams.",
     solution:
@@ -160,6 +170,7 @@ const projectsData = [
   {
     key: "rocket learning.png",
     title: "Rocket Learning",
+    subhead: "Scalable mobile-first edtech platform with analytics insights.",
     challenge:
       "Scaling a mobile-first learning experience required reliable infrastructure, analytics, and support for growth.",
     solution:

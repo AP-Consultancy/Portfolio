@@ -423,7 +423,7 @@ export default function ProjectModal({ open, onClose, project, iconSrc }) {
               </HeaderTopRow>
 
               <Subhead>
-                Enterprise product and platform delivery for high-performance teams.
+                {project?.subhead ?? ""}
               </Subhead>
 
               <StatsRow aria-hidden>
