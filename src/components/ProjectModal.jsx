@@ -412,8 +412,9 @@ export default function ProjectModal({ open, onClose, project, iconSrc }) {
                   <BrandText>
                     <Title>{project?.title ?? "Project"}</Title>
                     <Pills>
-                      <Pill>CRM</Pill>
-                      <Pill>Analytics</Pill>
+                      {(project?.pills ?? []).map((pill, idx) => (
+                        <Pill key={`${pill}-${idx}`}>{pill}</Pill>
+                      ))}
                     </Pills>
                   </BrandText>
                 </Brand>
@@ -427,22 +428,12 @@ export default function ProjectModal({ open, onClose, project, iconSrc }) {
               </Subhead>
 
               <StatsRow aria-hidden>
-                <Stat>
-                  <StatValue>40%</StatValue>
-                  <StatLabel>Sales growth</StatLabel>
-                </Stat>
-                <Stat>
-                  <StatValue>3x</StatValue>
-                  <StatLabel>Faster reports</StatLabel>
-                </Stat>
-                <Stat>
-                  <StatValue>200+</StatValue>
-                  <StatLabel>Users</StatLabel>
-                </Stat>
-                <Stat>
-                  <StatValue>99.9%</StatValue>
-                  <StatLabel>Uptime</StatLabel>
-                </Stat>
+                {(project?.stats ?? []).map((stat, idx) => (
+                  <Stat key={`${stat.label}-${idx}`}>
+                    <StatValue>{stat.value}</StatValue>
+                    <StatLabel>{stat.label}</StatLabel>
+                  </Stat>
+                ))}
               </StatsRow>
             </Header>
 

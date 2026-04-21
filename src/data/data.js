@@ -2,7 +2,18 @@ const projectsData = [
   {
     key: "Acuity.png",
     title: "Acuity Analytics",
-    subhead: "Unified analytics platform enabling faster, trusted financial insights.",
+    subhead:
+      "Unified analytics platform enabling faster, trusted financial insights.",
+
+    pills: ["Analytics", "Data", "BI"],
+
+    stats: [
+      { value: "50%", label: "Reporting speed" },
+      { value: "2x", label: "Data accuracy" },
+      { value: "10+", label: "Dashboards" },
+      { value: "24/7", label: "Availability" },
+    ],
+
     challenge:
       "Financial data lived across multiple sources, slowing reporting and making it hard for teams to trust a single version of truth.",
     solution:
@@ -15,10 +26,22 @@ const projectsData = [
     ],
     technologies: ["Python", "AWS", "Snowflake", "SQL", "Power BI", "Airflow"],
   },
+
   {
     key: "hdfc.png",
     title: "HDFC Bank",
-    subhead: "Digital-first loan onboarding with seamless workflows and validation.",
+    subhead:
+      "Digital-first loan onboarding with seamless workflows and validation.",
+
+    pills: ["Banking", "AEM", "Digital"],
+
+    stats: [
+      { value: "40%", label: "Faster approvals" },
+      { value: "3x", label: "Process speed" },
+      { value: "200+", label: "Users onboarded" },
+      { value: "99.9%", label: "Uptime" },
+    ],
+
     challenge:
       "Manual and fragmented application flows slowed approvals, increased operational overhead, and led to user drop-offs.",
     solution:
@@ -39,10 +62,22 @@ const projectsData = [
       "Oracle DB",
     ],
   },
+
   {
     key: "telus.png",
     title: "Telus",
-    subhead: "Scalable workflow systems for high-performance customer operations.",
+    subhead:
+      "Scalable workflow systems for high-performance customer operations.",
+
+    pills: ["Workflow", "Support", "Scalable"],
+
+    stats: [
+      { value: "2x", label: "System scalability" },
+      { value: "30%", label: "Faster response" },
+      { value: "Multi", label: "Client support" },
+      { value: "99%", label: "Reliability" },
+    ],
+
     challenge:
       "Support and workflow systems needed to scale reliably across multiple clients while maintaining fast response times.",
     solution:
@@ -55,10 +90,21 @@ const projectsData = [
     ],
     technologies: ["React", "Node.js", "JavaScript", "PostgreSQL", "APIs", "SSO"],
   },
+
   {
     key: "propic.png",
     title: "Propic",
     subhead: "AI-driven automation to streamline real estate workflows.",
+
+    pills: ["AI", "Automation", "Real Estate"],
+
+    stats: [
+      { value: "60%", label: "Manual work reduced" },
+      { value: "2x", label: "Efficiency" },
+      { value: "AI", label: "Powered flows" },
+      { value: "Fast", label: "Response time" },
+    ],
+
     challenge:
       "Real estate teams were spending time on repetitive follow-ups and lacked automation across key operational workflows.",
     solution:
@@ -71,10 +117,22 @@ const projectsData = [
     ],
     technologies: [".NET", "Angular", "Azure", "OpenAI"],
   },
+
   {
     key: "astrazeneca.png",
     title: "AstraZeneca",
-    subhead: "Optimized enterprise systems for scalable healthcare operations.",
+    subhead:
+      "Optimized enterprise systems for scalable healthcare operations.",
+
+    pills: ["Healthcare", "Enterprise", "Scalable"],
+
+    stats: [
+      { value: "35%", label: "Performance boost" },
+      { value: "Reduced", label: "Latency" },
+      { value: "High", label: "Throughput" },
+      { value: "Secure", label: "Access" },
+    ],
+
     challenge:
       "Large-scale operational and healthcare data required more efficient flows and better scalability to reduce bottlenecks.",
     solution:
@@ -87,10 +145,21 @@ const projectsData = [
     ],
     technologies: ["Azure", ".NET", "Microservices", "Entra ID", "Service mesh"],
   },
+
   {
     key: "salesforce.png",
     title: "Salesforce",
     subhead: "Customized CRM automation for efficient sales operations.",
+
+    pills: ["CRM", "Automation", "Sales"],
+
+    stats: [
+      { value: "45%", label: "Manual work reduced" },
+      { value: "2x", label: "Workflow speed" },
+      { value: "Improved", label: "Data quality" },
+      { value: "High", label: "Efficiency" },
+    ],
+
     challenge:
       "Enterprise CRM teams needed tailored automation and cleaner workflows to reduce manual work and improve consistency.",
     solution:
@@ -103,10 +172,22 @@ const projectsData = [
     ],
     technologies: ["Apex", "LWC", "Flows", "REST APIs"],
   },
+
   {
     key: "uplevyl.png",
     title: "Uplevyl",
-    subhead: "Personalized engagement with scalable analytics-driven experiences.",
+    subhead:
+      "Personalized engagement with scalable analytics-driven experiences.",
+
+    pills: ["Engagement", "Analytics", "Growth"],
+
+    stats: [
+      { value: "2x", label: "User engagement" },
+      { value: "Real-time", label: "Tracking" },
+      { value: "Fast", label: "Performance" },
+      { value: "Cloud", label: "Scalable" },
+    ],
+
     challenge:
       "Growth required better engagement tracking and personalized experiences without sacrificing performance.",
     solution:
@@ -119,10 +200,22 @@ const projectsData = [
     ],
     technologies: ["React", "Firebase", "Node.js", "AWS"],
   },
+
   {
     key: "Tailoredbrands.png",
     title: "Tailored Brands",
-    subhead: "Omnichannel retail systems with scalable backend services.",
+    subhead:
+      "Omnichannel retail systems with scalable backend services.",
+
+    pills: ["Retail", "Omnichannel", "Search"],
+
+    stats: [
+      { value: "Improved", label: "Inventory sync" },
+      { value: "High", label: "Traffic handling" },
+      { value: "Fast", label: "Search" },
+      { value: "Consistent", label: "UX" },
+    ],
+
     challenge:
       "Omnichannel operations needed better inventory visibility and systems that could scale across peak demand.",
     solution:
@@ -135,10 +228,22 @@ const projectsData = [
     ],
     technologies: ["Java", "Spring Boot", "AWS", "Elasticsearch"],
   },
+
   {
     key: "bathfitter.png",
     title: "Bath Fitter",
-    subhead: "Digitized scheduling with real-time workflow visibility.",
+    subhead:
+      "Digitized scheduling with real-time workflow visibility.",
+
+    pills: ["Scheduling", "Automation", "Tracking"],
+
+    stats: [
+      { value: "Real-time", label: "Updates" },
+      { value: "Reduced", label: "Delays" },
+      { value: "Better", label: "Coordination" },
+      { value: "Predictable", label: "Delivery" },
+    ],
+
     challenge:
       "Scheduling and order workflows were fragmented, leading to delays and limited real-time visibility for teams.",
     solution:
@@ -151,10 +256,22 @@ const projectsData = [
     ],
     technologies: ["React", "Node.js", "AWS", "PostgreSQL"],
   },
+
   {
     key: "agilty insights.png",
     title: "Agility Insights",
-    subhead: "Centralized BI platform for faster, consistent decision-making.",
+    subhead:
+      "Centralized BI platform for faster, consistent decision-making.",
+
+    pills: ["BI", "Data", "Reporting"],
+
+    stats: [
+      { value: "2x", label: "Faster insights" },
+      { value: "Unified", label: "Data" },
+      { value: "Accurate", label: "KPIs" },
+      { value: "Optimized", label: "Queries" },
+    ],
+
     challenge:
       "Business reporting was slowed by siloed data and inconsistent definitions across teams.",
     solution:
@@ -167,10 +284,22 @@ const projectsData = [
     ],
     technologies: ["SQL", "Python", "AWS Redshift", "Tableau"],
   },
+
   {
     key: "rocket learning.png",
     title: "Rocket Learning",
-    subhead: "Scalable mobile-first edtech platform with analytics insights.",
+    subhead:
+      "Scalable mobile-first edtech platform with analytics insights.",
+
+    pills: ["EdTech", "Mobile", "Analytics"],
+
+    stats: [
+      { value: "High", label: "Scalability" },
+      { value: "Mobile", label: "First" },
+      { value: "Reliable", label: "Infra" },
+      { value: "Fast", label: "Iterations" },
+    ],
+
     challenge:
       "Scaling a mobile-first learning experience required reliable infrastructure, analytics, and support for growth.",
     solution:
