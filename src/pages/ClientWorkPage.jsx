@@ -53,7 +53,7 @@ export default function ClientWorkPage() {
     <PageShell>
        <div style={{ position: "absolute", top: "20px", left: "24px", zIndex: 10}}>
         <img
-          src="/public/logo/ap.png"   
+          src="/logo/ap.png"   
           alt="Company Logo"
           style={{ height: "40px", width: "auto" }}
         />
