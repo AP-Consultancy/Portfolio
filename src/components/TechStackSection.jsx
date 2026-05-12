@@ -1,16 +1,24 @@
 import { motion } from "framer-motion";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { colors } from "../style";
 
 const Section = styled.section`
   padding: 80px 20px;
-  background: #f8fafc;
+  background: ${colors.techPanel};
   text-align: center;
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      padding: 52px max(16px, env(safe-area-inset-left, 0px)) 44px
+        max(16px, env(safe-area-inset-right, 0px));
+    `}
 `;
 
 const Title = styled.h2`
   font-size: 2.4rem;
   font-weight: 800;
-  color: #1e293b;
+  color: ${colors.text};
   max-width: 900px;
   margin: 0 auto 16px;
 
@@ -20,13 +28,13 @@ const Title = styled.h2`
 `;
 
 const Highlight = styled.span`
-  color: #f97316;
+  color: ${colors.accent};
 `;
 
 const Subtitle = styled.p`
   max-width: 750px;
   margin: 0 auto 50px;
-  color: #64748b;
+  color: ${colors.textMuted};
   line-height: 1.6;
 `;
 
@@ -36,10 +44,18 @@ const Grid = styled.div`
   gap: 28px;
   max-width: 1000px;
   margin: 0 auto;
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    `}
 `;
 
 const Card = styled(motion.div)`
-  background: white;
+  background: ${colors.bgSection};
+  border: 1px solid ${colors.borderSubtle};
   border-radius: 14px;
   padding: 20px 10px;
   display: flex;
@@ -48,13 +64,14 @@ const Card = styled(motion.div)`
   gap: 10px;
   cursor: pointer;
 
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
 
   transition: all 0.25s ease;
 
   &:hover {
     transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 43, 43, 0.35);
   }
 `;
 
@@ -67,7 +84,7 @@ const Icon = styled.img`
 const Label = styled.div`
   font-size: 0.95rem;
   font-weight: 600;
-  color: #334155;
+  color: ${colors.textMuted};
 `;
 
 const containerVariants = {

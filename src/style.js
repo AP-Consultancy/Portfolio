@@ -1,20 +1,33 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 export const colors = {
-  bgHero: "#F8F3FF",
-  bgSection: "#F0E6FF",
-  bgFooter: "#9B8AA8",
-  text: "#000000",
-  accent: "#D54DB4",
+  bgHero: "#000000",
+  bgSection: "#2a2a2a",
+  bgFooter: "#141414",
+  /** Tech stack band — near-black panel */
+  techPanel: "#1a1a1a",
+  text: "#ffffff",
+  textMuted: "rgba(255, 255, 255, 0.7)",
+  textSubtle: "rgba(255, 255, 255, 0.55)",
+  accent: "#ff2b2b",
+  borderSubtle: "rgba(255, 255, 255, 0.1)",
 };
 
 export const Wrapper = styled.div`
   font-family: "Montserrat", system-ui, sans-serif;
-  background: ${colors.bgSection};
+  background: ${colors.bgHero};
   color: ${colors.text};
   overflow-x: hidden;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      padding-left: max(1rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    `}
 `;
 
 export const HeroSection = styled.section`
@@ -35,6 +48,14 @@ export const HeroSection = styled.section`
   @media (max-width: 640px) {
     padding: 1.1rem 1.05rem 4.4rem;
   }
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      padding-top: max(1rem, env(safe-area-inset-top, 0px));
+      padding-bottom: 2.75rem;
+      min-height: unset;
+    `}
 `;
 export const HeroInner = styled.div`
   position: relative;
@@ -56,73 +77,92 @@ export const HeroInner = styled.div`
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
     gap: clamp(1.25rem, 2.2vw, 2rem);
   }
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      align-items: center;
+      justify-items: center;
+      text-align: center;
+      gap: 1.75rem;
+    `}
 `;
 
 export const HeroLogoStrip = styled.div`
-  margin-top: clamp(0rem, 0vw, 0rem);
-  margin-inline: calc(-1 * var(--hero-pad-x));
+  text-align: center;
+  margin-top: clamp(1.5rem, 4vw, 2.125rem);
+  margin-bottom: clamp(4rem, 14vw, 6.875rem);
 `;
 
+/** Matches apconsultancy.in hero logo ticker (.hx-logo-marquee / .hx-logo-track) */
 export const HeroLogoMarquee = styled.div`
-  --strip-gap: clamp(5rem, 2.5vw, 2.25rem);
-  --logo-h: clamp(34px, 3.8vw, 44px);
+  --strip-gap: 52px;
 
   position: relative;
+  margin-top: 18px;
+  width: min(860px, 100%);
+  margin-inline: auto;
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      width: 100%;
+      max-width: 100%;
+      margin-top: 12px;
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent,
+        #000 8% 92%,
+        transparent
+      );
+      mask-image: linear-gradient(90deg, transparent, #000 8% 92%, transparent);
+    `}
   overflow: hidden;
-  border-radius: 0;
-  padding: clamp(0.65rem, 1.2vw, 0.9rem) 0;
-  background: rgba(255, 255, 255, 0.6);
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(8px);
+  padding: 0;
+  background: transparent;
+  border: none;
 
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: clamp(36px, 7vw, 96px);
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  &::before {
-    left: 0;
-    background: linear-gradient(
-      90deg,
-      ${colors.bgHero} 0%,
-      rgba(248, 243, 255, 0) 100%
-    );
-  }
-
-  &::after {
-    right: 0;
-    background: linear-gradient(
-      270deg,
-      ${colors.bgHero} 0%,
-      rgba(248, 243, 255, 0) 100%
-    );
-  }
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12% 88%,
+    transparent
+  );
+  mask-image: linear-gradient(90deg, transparent, #000 12% 88%, transparent);
 `;
 
 export const HeroLogoTrack = styled.div`
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: hero-logo-marquee 26s linear infinite;
+  align-items: center;
+  gap: var(--strip-gap);
+  color: #e2e2e2;
+  opacity: 0.85;
+  font-weight: 500;
+  animation: marquee-left-to-right 18s linear infinite;
 
-  @keyframes hero-logo-marquee {
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      --strip-gap: 36px;
+      gap: var(--strip-gap);
+      animation-duration: 28s;
+    `}
+
+  @keyframes marquee-left-to-right {
     from {
-      transform: translateX(0);
+      transform: translateX(-50%);
     }
     to {
-      transform: translateX(-50%);
+      transform: translateX(0);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
+    transform: none;
+    opacity: 1;
   }
 `;
 
@@ -135,21 +175,42 @@ export const HeroLogoGroup = styled.div`
 
 export const HeroLogoItem = styled.div`
   flex: 0 0 auto;
-  height: var(--logo-h);
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   img {
     display: block;
-    height: 100%;
+    object-fit: contain;
     width: auto;
-    opacity: 0.92;
+    max-width: 170px;
+    height: auto;
+    min-height: 40px;
+    max-height: 40px;
   }
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      img {
+        max-width: min(140px, 38vw);
+        min-height: 32px;
+        max-height: 34px;
+      }
+    `}
 `;
 
 export const HeroCopy = styled.div`
   text-align: left;
-  font-family: "Orbitron", "Montserrat", system-ui, sans-serif;
+  font-family: "Figtree", "Montserrat", system-ui, sans-serif;
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      text-align: center;
+      margin-inline: auto;
+      max-width: min(22rem, 92vw);
+    `}
 
   .line1,
   .line2 {
@@ -168,26 +229,31 @@ export const HeroCopy = styled.div`
     font-weight: 800;
     letter-spacing: 0.03em;
     line-height: 1.05;
-    background: linear-gradient(
-      90deg,
-      #8b7fd8 0%,
-      #a855c8 38%,
-      #d946b8 72%,
-      #e91e8c 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: ${colors.accent};
   }
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      .line1,
+      .line2 {
+        font-size: clamp(1.35rem, 5.2vw, 1.85rem);
+        line-height: 1.18;
+      }
+      .line3 {
+        font-size: clamp(1.75rem, 7vw, 2.25rem);
+        margin-top: 0.35rem;
+      }
+    `}
 `;
 
 /* Balanced floating collage: diagonal flow TL → BR, intentional offsets + z-index */
 export const LogoCollage = styled.div`
   --collage-pad: clamp(6px, 1.8vw, 14px);
   --card-w: 36%;
-  --shadow-back: 0 10px 28px rgba(25, 15, 45, 0.12);
-  --shadow-mid: 0 14px 36px rgba(25, 15, 45, 0.16);
-  --shadow-main: 0 20px 48px rgba(25, 15, 45, 0.22);
+  --shadow-back: 0 10px 28px rgba(0, 0, 0, 0.35);
+  --shadow-mid: 0 14px 36px rgba(0, 0, 0, 0.42);
+  --shadow-main: 0 20px 48px rgba(0, 0, 0, 0.5);
 
   position: relative;
   width: 100%;
@@ -209,6 +275,14 @@ export const LogoCollage = styled.div`
     margin: 0 0 0 auto;
     min-height: clamp(340px, 38vw, 430px);
   }
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      max-width: min(100%, 380px);
+      min-height: clamp(260px, 72vw, 340px);
+      margin-inline: auto;
+    `}
 `;
 
 // export const HeroCollageMotion = styled(motion.div)`
@@ -315,7 +389,7 @@ export const CaseSection = styled.section`
   padding: clamp(3.5rem, 7vw, 5.75rem) clamp(1.25rem, 4vw, 4rem)
     clamp(4rem, 8vw, 6rem);
   margin-top: clamp(-2rem, -3vw, -1.25rem);
-  box-shadow: 0 -12px 48px rgba(80, 50, 120, 0.08);
+  box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.45);
 `;
 
 export const CaseInner = styled.div`
@@ -526,12 +600,27 @@ export const BottomSection = styled.section`
   border-radius: clamp(36px, 7vw, 64px) clamp(36px, 7vw, 64px) 0 0;
   min-height: clamp(100px, 18vw, 160px);
   margin-top: clamp(-1.5rem, -2.5vw, -0.75rem);
-  box-shadow: 0 -10px 40px rgba(40, 25, 55, 0.12);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.35);
 `;
 
 export const StoriesSection = styled.section`
-  background: #ffffff;
+  position: relative;
+  z-index: 1;
+  background: ${colors.bgHero};
+  color: ${colors.text};
+  border-radius: clamp(40px, 8vw, 72px) clamp(40px, 8vw, 72px) 0 0;
   padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.25rem, 4vw, 4rem);
+  margin-top: 0;
+  box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.45);
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      padding-left: max(1rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1rem, env(safe-area-inset-right, 0px));
+      padding-bottom: max(2.5rem, env(safe-area-inset-bottom, 0px));
+      border-radius: clamp(28px, 8vw, 48px) clamp(28px, 8vw, 48px) 0 0;
+    `}
 `;
 
 export const StoriesInner = styled.div`
@@ -570,7 +659,7 @@ export const StoriesLeft = styled.div`
 export const Eyebrow = styled.div`
   font-size: 0.95rem;
   font-weight: 600;
-  color: #6f5fdc;
+  color: ${colors.accent};
   margin-bottom: 0.9rem;
 `;
 
@@ -581,7 +670,7 @@ export const StoriesTitle = styled.h2`
   line-height: 1.15;
   letter-spacing: -0.03em;
   font-weight: 800;
-  color: #0b1220;
+  color: ${colors.text};
 
   @media (min-width: 640px) {
     white-space: nowrap;
@@ -598,23 +687,28 @@ export const Tabs = styled.div`
 
 export const Tab = styled.button`
   appearance: none;
-  border: 0;
-  background: ${(p) => (p["data-active"] ? "#6f5fdc" : "transparent")};
-  color: ${(p) => (p["data-active"] ? "#ffffff" : "#0b1220")};
+  border: 1px solid
+    ${(p) => (p["data-active"] ? colors.accent : colors.borderSubtle)};
+  background: ${(p) => (p["data-active"] ? colors.accent : "transparent")};
+  color: ${(p) => (p["data-active"] ? "#ffffff" : colors.textSubtle)};
   padding: 0.5rem 0.85rem;
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: transform 120ms ease, background 120ms ease, color 120ms ease;
+  transition: transform 120ms ease, background 120ms ease, color 120ms ease,
+    border-color 120ms ease;
 
   &:hover {
     transform: translateY(-1px);
+    color: ${(p) => (p["data-active"] ? "#ffffff" : colors.text)};
+    border-color: ${(p) =>
+      p["data-active"] ? colors.accent : "rgba(255, 255, 255, 0.22)"};
   }
 `;
 
 export const StoriesLink = styled.a`
-  color: #6f5fdc;
+  color: ${colors.accent};
   text-decoration: none;
   font-weight: 700;
   font-size: 0.92rem;
@@ -628,18 +722,19 @@ export const StoriesLink = styled.a`
 export const PageShell = styled.div`
   font-family: "Montserrat", system-ui, sans-serif;
   min-height: 100vh;
-  background: radial-gradient(
-      900px 420px at 20% 10%,
-      rgba(111, 95, 220, 0.18),
-      rgba(255, 255, 255, 0) 55%
-    ),
-    radial-gradient(
-      840px 460px at 80% 0%,
-      rgba(34, 197, 94, 0.12),
-      rgba(255, 255, 255, 0) 56%
-    ),
-    linear-gradient(180deg, #ffffff, #f8fafc);
+  min-height: -webkit-fill-available;
+  background: ${colors.bgHero};
+  color: ${colors.text};
   padding: clamp(1.1rem, 3vw, 2.2rem);
+  overflow-x: hidden;
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      padding-left: max(1rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1rem, env(safe-area-inset-right, 0px));
+      padding-bottom: max(1.1rem, env(safe-area-inset-bottom, 0px));
+    `}
 `;
 
 export const PageHeader = styled.div`
@@ -648,26 +743,62 @@ export const PageHeader = styled.div`
   padding: 0.25rem 0 1.2rem;
 `;
 
+/** Client work page: header offset below floating logo */
+export const ClientPageHeader = styled(PageHeader)`
+  margin-top: 5rem;
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      margin-top: max(4rem, calc(env(safe-area-inset-top, 0px) + 2.75rem));
+    `}
+`;
+
+/** Top-left brand slot with safe-area insets on notched phones */
+export const ClientBrandSlot = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  z-index: 10;
+
+  img {
+    display: block;
+    height: 40px;
+    width: auto;
+  }
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      top: max(14px, env(safe-area-inset-top, 0px));
+      left: max(14px, env(safe-area-inset-left, 0px));
+
+      img {
+        height: 34px;
+      }
+    `}
+`;
+
 export const BackLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-weight: 500;
-  color: #0b1220;
+  color: ${colors.text};
   text-decoration: none;
-  opacity: 0.9;
+  opacity: 0.92;
   margin-bottom: 1rem;
   padding: 0.45rem 0.75rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid ${colors.borderSubtle};
   backdrop-filter: blur(10px);
   transition: transform 140ms ease, opacity 140ms ease, background 140ms ease;
 
   &:hover {
     transform: translateY(-1px);
     opacity: 1;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
   }
 `;
 
@@ -677,7 +808,7 @@ export const PageTitle = styled.h1`
   line-height: 1.08;
   letter-spacing: -0.04em;
   font-weight: 900;
-  color: #0b1220;
+  color: ${colors.text};
 `;
 
 export const PageSub = styled.p`
@@ -685,7 +816,7 @@ export const PageSub = styled.p`
   max-width: 62ch;
   font-size: 1.05rem;
   line-height: 1.45;
-  color: #475569;
+  color: ${colors.textMuted};
 `;
 
 export const ClientGrid = styled.div`
@@ -709,9 +840,9 @@ export const ClientGrid = styled.div`
 export const ClientCard = styled.div`
   border-radius: 22px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
+  background: ${colors.bgSection};
+  border: 1px solid ${colors.borderSubtle};
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px);
   transform: translateZ(0);
 `;
@@ -761,11 +892,11 @@ export const ClientCardMedia = styled.div`
     gap: 0.55rem;
     padding: 0.55rem 0.8rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(15, 23, 42, 0.1);
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid ${colors.borderSubtle};
     backdrop-filter: blur(12px);
     font-weight: 600;
-    color: #0b1220;
+    color: ${colors.text};
     letter-spacing: -0.02em;
   }
 
@@ -773,8 +904,8 @@ export const ClientCardMedia = styled.div`
     width: 10px;
     height: 10px;
     border-radius: 4px;
-    background: #6f5fdc;
-    box-shadow: 0 12px 30px rgba(111, 95, 220, 0.32);
+    background: ${colors.accent};
+    box-shadow: 0 12px 30px rgba(255, 43, 43, 0.35);
   }
 `;
 
@@ -787,7 +918,7 @@ export const ClientCardTitle = styled.h3`
   font-size: 1.08rem;
   font-weight: 900;
   letter-spacing: -0.02em;
-  color: #0b1220;
+  color: ${colors.text};
   line-height: 1.15;
 `;
 
@@ -795,7 +926,7 @@ export const ClientCardDesc = styled.p`
   margin: 0.55rem 0 0;
   font-size: 0.95rem;
   line-height: 1.45;
-  color: #475569;
+  color: ${colors.textMuted};
 `;
 
 export const ClientCardChips = styled.div`
@@ -808,9 +939,9 @@ export const ClientCardChips = styled.div`
 export const Chip = styled.span`
   font-size: 0.82rem;
   font-weight: 800;
-  color: rgba(11, 18, 32, 0.85);
-  background: rgba(111, 95, 220, 0.1);
-  border: 1px solid rgba(111, 95, 220, 0.18);
+  color: ${colors.text};
+  background: rgba(255, 43, 43, 0.12);
+  border: 1px solid rgba(255, 43, 43, 0.28);
   padding: 0.35rem 0.55rem;
   border-radius: 999px;
 `;
@@ -825,14 +956,14 @@ export const Stats = styled.div`
 export const StatNumber = styled.div`
   font-size: 1.2rem;
   font-weight: 800;
-  color: #0b1220;
+  color: ${colors.text};
   letter-spacing: -0.02em;
 `;
 
 export const StatLabel = styled.div`
   margin-top: 0.35rem;
   font-size: 0.92rem;
-  color: #4b5565;
+  color: ${colors.textMuted};
   line-height: 1.35;
   max-width: 30ch;
 `;
@@ -843,7 +974,7 @@ export const ProductsUsed = styled.div`
   .title {
     font-size: 0.95rem;
     font-weight: 800;
-    color: #0b1220;
+    color: ${colors.text};
     margin-bottom: 0.75rem;
   }
 `;
@@ -852,7 +983,7 @@ export const ProductList = styled.div`
   display: grid;
   gap: 0.55rem;
   font-size: 0.95rem;
-  color: #334155;
+  color: ${colors.textMuted};
 `;
 
 export const ProductItem = styled.div`
@@ -997,6 +1128,13 @@ export const HeroCollageMotion = styled(motion.div)`
     margin-left: auto;
     margin-right: 0;
   }
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      max-width: min(340px, 92vw);
+      height: clamp(252px, 66vw, 330px);
+    `}
 `;
 
 export const LogoCard = styled.div`
@@ -1006,7 +1144,7 @@ export const LogoCard = styled.div`
   border-radius: 35px;
   overflow: hidden;
   background: white;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
 
   img {
     width: 100%;
@@ -1046,6 +1184,32 @@ export const LogoCard = styled.div`
   &.card-3 { top: 60%;  left: 16%;   }
   &.card-4 { top: 35%;  left:53%;  }
 }
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      width: clamp(96px, 26vw, 132px);
+      height: calc(clamp(96px, 26vw, 132px) * 1.22);
+      border-radius: 22px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+
+      &.card-1 {
+        top: 18%;
+        left: 2%;
+      }
+      &.card-2 {
+        top: 2%;
+        left: 36%;
+      }
+      &.card-3 {
+        top: 56%;
+        left: 14%;
+      }
+      &.card-4 {
+        top: 32%;
+        left: 52%;
+      }
+    `}
 `;
 export const GlobalStylesFix = styled.div`
   .hero-logo {
@@ -1059,4 +1223,15 @@ export const GlobalStylesFix = styled.div`
       display: block;
     }
   }
+
+  ${({ theme }) =>
+    theme?.isMobile &&
+    css`
+      .hero-logo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    `}
 `;

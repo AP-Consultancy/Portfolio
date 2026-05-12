@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   BackLink,
+  ClientBrandSlot,
   ClientCard,
   ClientCardBody,
   ClientCardChips,
@@ -10,8 +11,8 @@ import {
   ClientCardMedia,
   ClientCardTitle,
   ClientGrid,
+  ClientPageHeader,
   Chip,
-  PageHeader,
   PageShell,
   PageSub,
   PageTitle,
@@ -51,14 +52,10 @@ export default function ClientWorkPage() {
 
   return (
     <PageShell>
-       <div style={{ position: "absolute", top: "20px", left: "24px", zIndex: 10}}>
-        <img
-          src="/logo/ap.png"   
-          alt="Company Logo"
-          style={{ height: "40px", width: "auto" }}
-        />
-      </div>
-      <PageHeader style={{ marginTop: "5rem" }}>
+      <ClientBrandSlot>
+        <img src="/logo/ap-white.png" alt="Company Logo" />
+      </ClientBrandSlot>
+      <ClientPageHeader>
       <div
         style={{
           display: "flex",
@@ -84,7 +81,7 @@ export default function ClientWorkPage() {
             {clientWorkPageCopy.subtitle}
           </PageSub>
       </div>
-    </PageHeader>
+    </ClientPageHeader>
       <AnimatePresence>
         <ClientGrid
           as={Motion.div}
